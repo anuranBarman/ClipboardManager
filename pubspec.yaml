@@ -2,7 +2,7 @@ name: clipboard_manager
 description: A flutter plugin to copy text to clipboard.
 version: 0.0.1
 author: Anuran Barman
-homepage: 
+homepage: https://github.com/anuranBarman/ClipboardManager
 
 environment:
   sdk: ">=2.0.0-dev.68.0 <3.0.0"
