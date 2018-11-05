@@ -1,7 +1,5 @@
 .DS_Store
 .dart_tool/
-android/
-ios/
 .idea
 .packages
 .pub/
