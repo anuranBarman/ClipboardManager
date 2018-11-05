@@ -3,7 +3,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'clipboard_manager'
-  s.version          = '0.0.1'
+  s.version          = '0.0.2'
   s.summary          = 'flutter plugin to copy text to clipboard.'
   s.description      = <<-DESC
 Flutter plugin to copy text to clipboard.
