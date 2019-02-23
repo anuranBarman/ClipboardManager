@@ -1,5 +1,8 @@
 # clipboard_manager
 
+[![pub package](https://img.shields.io/pub/v/clipboard_manager.svg)](https://pub.dartlang.org/packages/clipboard_manager)
+
+
 simple flutter plugin to copy text to clipboard in both android and ios.
 
 # Install
