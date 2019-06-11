@@ -9,8 +9,19 @@ public class SwiftClipboardManagerPlugin: NSObject, FlutterPlugin {
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-    let args = call.arguments! as! [String:Any]
-    UIPasteboard.general.string = args["text"] as? String
-    result(true)
+    switch call.method {
+    case "copyToClipBoard":
+      let args = call.arguments! as! [String:Any]
+      UIPasteboard.general.string = args["text"] as? String
+      result(true)
+      break
+    case "copyFromClipBoard":
+      if let clipBoardString = UIPasteboard.general.string {
+        result(clipBoardString)
+      }
+      break
+    default: 
+      result("")
+    }
   }
 }

@@ -13,4 +13,9 @@ class ClipboardManager {
     });
     return result;
   }
+
+  static Future<String> copyFromClipBoard() async {
+    final String result = await _channel.invokeMethod('copyFromClipBoard');
+    return result;
+  }
 }

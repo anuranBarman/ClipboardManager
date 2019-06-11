@@ -28,18 +28,35 @@ public class ClipboardManagerPlugin implements MethodCallHandler {
 
   @Override
   public void onMethodCall(MethodCall call, Result result) {
+    Context context;
+    if (registrar.activity() != null) {
+      context = (Context) registrar.activity();
+    } else {
+      context = registrar.context();
+    }
+    ClipboardManager clipboard = (ClipboardManager)context.getSystemService(Context.CLIPBOARD_SERVICE);
+    
     if (call.method.equals("copyToClipBoard")) {
       String thingToCopy = call.argument("text");
-      Context context;
-      if (registrar.activity() != null) {
-        context = (Context) registrar.activity();
-      } else {
-        context = registrar.context();
-      }
-      ClipboardManager clipboard = (ClipboardManager)context.getSystemService(Context.CLIPBOARD_SERVICE);
       ClipData clip = ClipData.newPlainText("", thingToCopy);
       clipboard.setPrimaryClip(clip);
       result.success(true);
+    } else if(call.method.equals("copyFromClipBoard")){
+      android.content.ClipData clipData = clipboard.getPrimaryClip();
+
+      if(clipData == null){
+        result.success(""); 
+      }
+
+      if (clipData.getItemCount() >= 1) {
+        ClipData.Item clipDataItem = clipboard.getPrimaryClip().getItemAt(0);
+
+        String data = "" + clipDataItem.getText();
+
+        result.success(data);
+      } else {
+        result.success(""); 
+      }
     } else {
       result.notImplemented();
     }

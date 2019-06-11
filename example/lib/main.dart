@@ -46,6 +46,21 @@ class _MyAppState extends State<MyApp> {
                         Scaffold.of(context).showSnackBar(snackBar);
                       });
                     },
+                  ),
+                  RaisedButton(
+                    child: Text('Copy from Clipboard'),
+                    onPressed: () {
+                      ClipboardManager.copyFromClipBoard().then((result) {
+                        final snackBar = SnackBar(
+                          content: Text('Clipboard data: $result'),
+                          action: SnackBarAction(
+                            label: 'Okey',
+                            onPressed: () {},
+                          ),
+                        );
+                        Scaffold.of(context).showSnackBar(snackBar);
+                      });
+                    },
                   )
                 ],
               ),
