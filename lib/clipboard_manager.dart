@@ -7,10 +7,10 @@ class ClipboardManager {
       const MethodChannel('clipboard_manager');
 
   static Future<bool> copyToClipBoard(String text) async {
-    final bool result = await _channel.invokeMethod('copyToClipBoard',
+    final bool? result = await _channel.invokeMethod('copyToClipBoard',
     <String,String>{
       'text':text
     });
-    return result;
+    return result ?? false;
   }
 }
